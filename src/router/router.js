@@ -1,9 +1,6 @@
 'use strict'
-import stroll from '../components/Stroll'
-import brand from '../components/Brand'
+import tablelist from '../components/Tablelist'
 import login from '../components/Login'
-import details from '../components/Details'
-import me from '../components/Me'
 import index from '../index'
 
 export default [
@@ -14,27 +11,15 @@ export default [
       children: [
         {
           path: '',
-          component: stroll,
-          name:"stroll"
+          component: tablelist,
+          name:"tablelist"
         },    
         //逛逛
         {
-          path: 'stroll',
-          component: stroll,
-          name:"stroll"
-        },
-       	//品牌
-        {
-          path: 'brand',
-          component: brand,
-          name:"brand"
-        },
-        //我
-        {
-          path: 'me',
-          component: me,
-          name:"me"
-        }        
+          path: 'tablelist',
+          component: tablelist,
+          name:"tablelist"
+        }       
       ]
     } ,  	
 	//登录
@@ -43,6 +28,5 @@ export default [
 		component: login, 
 		name:"login",
 		meta: { requiresAuth: true }
-	},
-	{path: '/details', component: details, name:"details"}
+	}
 ]
