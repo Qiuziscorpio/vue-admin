@@ -5,12 +5,12 @@
 			<el-submenu index="1">
 				<template slot="title"><i class="el-icon-message"></i>导航一</template>
 				<el-menu-item-group title="">
-					<el-menu-item route="{ name: 'brand'}" >
+					<el-menu-item index="tablelist" :route="{name:'tablelist'}" >
 						表格
 					</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
-			<el-menu-item index="login">
+			<el-menu-item index="login" :route="{name:'login'}">
 					<i class="el-icon-menu"></i>导航二
 			</el-menu-item>
 			<el-menu-item index="3">

@@ -1,13 +1,9 @@
 <template>
 	<div>
-		<el-row type="flex">
-			<el-col :span="24">
-				<div class="grid-content">
-					<el-col :span="3">
-						<el-input placeholder="请输入用户名" icon="search" v-model="input1" @click="handleIconClick"  size="small">
-						</el-input>
-					</el-col>
-				</div>
+		<el-row type="flex" class="el-card_head" align="middle" justify="end">
+			<el-col :span="3">
+				<el-input placeholder="请输入用户名" icon="search" v-model="input1" @click="handleIconClick"  size="small">
+				</el-input>
 			</el-col>
 		</el-row>
 		<Vtable></Vtable>
@@ -25,6 +21,7 @@
 		},
 	  methods:{
 	  	handleIconClick(){
+	  		console.log("pp")
 	  	}
 	  },
 		components: {
@@ -39,5 +36,9 @@
 		input.el-input__inner{
 			border-radius:5rem ;
 			background: #EFF2F7;
+		}
+		.el-card_head{
+			padding: 12px;
+			border-bottom: 1px solid #EFF2F7;
 		}
 </style>

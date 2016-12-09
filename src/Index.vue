@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<el-row >
+		<el-row class="">
 		  <el-col :span="3">
 		  		<!--左侧菜单-->
 		  		<leftnav></leftnav>
 		  </el-col>
-		  <el-col :span="21">
+		  <el-col :span="21" class="bg-purple-white">
 			  	<!--右侧内容-->
-			  	<div class="grid-content">
+			  	<div class="grid-content scroll">
 				  	<router-view>
 				  	</router-view>
 			  	</div>
@@ -36,5 +36,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+
+
 </style>
