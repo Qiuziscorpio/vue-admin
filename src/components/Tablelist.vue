@@ -31,7 +31,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 
 		input.el-input__inner{
 			border-radius:5rem ;

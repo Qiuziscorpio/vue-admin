@@ -18,6 +18,7 @@
 
 <script>
 	import 'src/assets/css/index.css';
+	import 'src/assets/icon/iconfont.css'
 	import 	leftnav from  'components/childcomponents/leftNav.vue'
 	
 	export default {
