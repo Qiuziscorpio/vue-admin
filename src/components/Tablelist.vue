@@ -16,14 +16,14 @@
 		name: 'tablelist',
 		data() {
 			return {
-				input1:""
+				input1: ""
 			}
 		},
-	  methods:{
-	  	handleIconClick(){
-	  		console.log("pp")
-	  	}
-	  },
+		methods: {
+			handleIconClick() {
+				console.log("pp")
+			}
+		},
 		components: {
 			Vtable
 		}

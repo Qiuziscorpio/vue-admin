@@ -6,11 +6,24 @@
 </template>
 
 <script>
+import store from './vuex/store'
+
 export default {
   name: 'app',
-	components: {
-	},
+  data(){
+  	return {}
+  },
 	computed: {
+	},  
+  methods:{
+  	vuex: {
+  		getters:{
+  			accessToken:({userInfo}) => userInfo.accessToken
+  		}
+  	}
+  },
+	components: {
+		store
 	}
 }
 </script>
