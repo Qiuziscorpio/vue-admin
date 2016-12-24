@@ -18,6 +18,21 @@ const router = new Router({
   routes: RouterMap
 })
 
+
+router.beforeEach(({meta,path},from,next) =>{
+	var {auth = true} =meta;
+	var isLogin=Boolean(store.state.login.token) //true用已登录    false用户未登陆
+	
+	if(auth && !isLogin && path !=='/login'){
+		return next({ path: '/login'})
+	}
+	if(isLogin && (path == 'login' || path == '/reg')){
+		return next({path: '/index'})
+	}
+	next()
+})
+
+
 new Vue({ // eslint-disable-line
   el: '#app',
   render: h => h(App),

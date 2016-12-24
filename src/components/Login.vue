@@ -36,8 +36,18 @@
 </template>
 
 <script>
+import { setBaseInfo, setDetail } from '../vuex/actions/user_actions'
+import { setMenu,setTip } from '../vuex/actions/doc_actions'
 	export default {
 		name: 'login',
+		vuex: {
+			actions: {
+				setBaseInfo,
+				setMenu,
+				setTip,
+				setDetail
+			}
+		},
 		data() {
 			var checkPhone = (rule, value, callback) => {
 				if(!value) {
@@ -82,12 +92,35 @@
 			};
 		},
 		methods: {
+			success () {
+				window.history.go(-1)
+				this.setMenu(true)
+				this.setDetail()
+			},
 			handleReset2() {
 				this.$refs.ruleForm2.resetFields();
 			},
 			handleSubmit2(ev) {
 				let _self = this
-				_self.$refs.ruleForm2.validate((valid) => {
+				
+				if(this.access.length<6){
+					this.setTip({
+						text: '请输入正确的 Access Token'
+					})
+					return
+				}
+				
+				this.setBaseInfo(this.access,(res)=>{
+					if(res.success) {
+						this.success()
+					}
+					 this.setTip({
+					 	text:res.msg
+					 })
+				})
+				
+				
+/*				_self.$refs.ruleForm2.validate((valid) => {
 					if(valid) {
 						_self.$http.get('http://rap.taobao.org/mockjsdata/11407/login/user',{'id':_self.phone,'password':_self.verification}).then((response) => {
 							console.log(response.data)
@@ -98,7 +131,7 @@
 						console.log('error submit!!');
 						return false;
 					}
-				});
+				});*/
 			}
 		}
 		
