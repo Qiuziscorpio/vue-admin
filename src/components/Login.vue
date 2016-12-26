@@ -36,18 +36,9 @@
 </template>
 
 <script>
-import { setBaseInfo, setDetail } from '../vuex/actions/user_actions'
-import { setMenu,setTip } from '../vuex/actions/doc_actions'
+	import { mapActions } from 'vuex'
 	export default {
 		name: 'login',
-		vuex: {
-			actions: {
-				setBaseInfo,
-				setMenu,
-				setTip,
-				setDetail
-			}
-		},
 		data() {
 			var checkPhone = (rule, value, callback) => {
 				if(!value) {
@@ -91,47 +82,34 @@ import { setMenu,setTip } from '../vuex/actions/doc_actions'
 				}
 			};
 		},
+		computed: {
+			...mapActions({
+				UserLogin: 'UserLogin',
+			})
+		},		
 		methods: {
-			success () {
-				window.history.go(-1)
-				this.setMenu(true)
-				this.setDetail()
-			},
 			handleReset2() {
 				this.$refs.ruleForm2.resetFields();
 			},
 			handleSubmit2(ev) {
 				let _self = this
-				
-				if(this.access.length<6){
-					this.setTip({
-						text: '请输入正确的 Access Token'
-					})
-					return
-				}
-				
-				this.setBaseInfo(this.access,(res)=>{
-					if(res.success) {
-						this.success()
-					}
-					 this.setTip({
-					 	text:res.msg
-					 })
-				})
-				
-				
-/*				_self.$refs.ruleForm2.validate((valid) => {
+
+				console.log(this.$store)  
+
+				_self.$refs.ruleForm2.validate((valid) => {
 					if(valid) {
-						_self.$http.get('http://rap.taobao.org/mockjsdata/11407/login/user',{'id':_self.phone,'password':_self.verification}).then((response) => {
-							console.log(response.data)
-						}, (response) => {
-					        console.log('出错啦')
-				      	})
+						
+						//_self.$store.dispatch('UserLogin',_self.ruleForm2);
+						// _self.$http.get('http://rap.taobao.org/mockjsdata/11407/login/user',{'id':_self.phone,'password':_self.verification}).then((response) => {
+						// 	console.log(response.data)
+						// }, (response) => {
+					    //     console.log('出错啦')
+				      	// })
 					} else {
 						console.log('error submit!!');
 						return false;
 					}
-				});*/
+				});
 			}
 		}
 		
